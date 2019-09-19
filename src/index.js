@@ -1,17 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
+import App from './App'
 
-export default class Index extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Teste</h1>
-      </div>
-    )
-  }
-}
-
-const wrapper = document.getElementById('create-app')
-wrapper ? ReactDOM.render(<Index />, wrapper) : false;
+const wrapper = document.getElementById('root')
+wrapper ? ReactDOM.render(<App />, wrapper) : console.log('failed to find wrapper');
 
 
