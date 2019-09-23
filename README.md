@@ -1,10 +1,10 @@
 # movie-finder
 
-Um App simples de busca que usa a OMDB API para procurar por filmes online com uma API pública
+Um App simples de busca que usa a OMDB API para procurar por filmes/séries/jogos online utilizando uma API aberta.
 
 http://www.omdbapi.com/
 
-# Estrutura da APlicação
+# Estrutura da Aplicação
 
 A Aplicação é feita em react utilizando hooks, Styled components para a estilização do app, redux para gerenciar o estado da aplicação,
 redux saga como middleware para fazer requisições assíncronas diretamente no redux, React router para o gerenciamento das rotas e 
