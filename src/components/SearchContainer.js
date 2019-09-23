@@ -28,6 +28,13 @@ export default function SearchBar(props){
     function titleChangeHandler (e){
         setTitle(e.target.value.trim())
     }
+    function yearHandler(e){
+        setYear(e.target.value)
+    }
+    function typeHandler(e){
+        setType(e.target.value)
+    }
+
         return (
             <SearchContainer>
                 <div className="filters">
@@ -35,19 +42,17 @@ export default function SearchBar(props){
                         <input type="text" id="title" name="title" placeholder="busque um filme por nome" onChange={titleChangeHandler}/>
                         <button onClick={search}>Buscar</button>
                     </div>
-                    {optionsVisibility && 
                         <div className="options">
                                     <label htmlFor="type">Tipo</label>                        
-                                    <select onChange={(e) => setType(e.target.value)} name="type">
+                                    <select onChange={typeHandler} value={type} placeholder="escolha um tipo" name="type">
                                         <option value="movie">Filme</option>
                                         <option value="series">Série</option>
                                         <option value="episode">Episódio</option>
+                                        <option value="game">jogo</option>
                                     </select>
                                     <label htmlFor="year">ano</label>
-                                    <input type="number" id="year" name="year" onChange={(e) => setYear(e.target.value)}/>  
-                        </div>}
-
-                    
+                                    <input placeholder="Filtre por ano" type="number" id="year" name="year" onChange={yearHandler}/>  
+                        </div>
                 </div>
             </SearchContainer>
         )
@@ -95,10 +100,29 @@ const SearchContainer = styled.div`
             }
         }
         .options{
-            transition: opacity 5s;
-            width: ${props => props.optionsWidth ? props.optionsWidth : '58%'};
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            width: 55%;
             border-radius: 0 0 20px 20px;
             background: #c3c3c3;
+            background: #c3c3c330;
+            border: 2px solid white;
+            box-sizing: border-box;
+            border-top: none;
+            padding: 15px;
+            color: white;
+            input, select{
+                width: 60%;
+                height: 30px;
+                border-radius: 5px;
+                border: none;
+                box-sizing: border-box;
+                padding: 5px;
+            }
+            label{
+                margin: 10px 0;
+            }
             
         }
 }
