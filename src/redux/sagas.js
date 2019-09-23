@@ -1,8 +1,9 @@
 import { takeEvery, call, select, all, put } from 'redux-saga/effects';
-import { removeDuplicatesByObjKey } from '../helpers/helperFunctions'
-import { getMovies } from '../services/getMovies'
-import { fetchMovies, setLoadMore } from './actions/movieActions'
-import { MOVIES } from './actionTypes'
+import { removeDuplicatesByObjKey } from '../helpers/helperFunctions';
+import { getMovies } from '../services/getMovies';
+import { fetchMovies, setLoadMore } from './actions/movieActions';
+import { MOVIES, SPECIFIC_MOVIE } from './actionTypes';
+import { setSpecificMovieInfo } from './actions/specificMovieActions'
 
 function* asyncGetMovies(){
     try {
@@ -14,7 +15,7 @@ function* asyncGetMovies(){
         response.Search = filteredSearch
         yield put(fetchMovies(response))
     } catch (e) {
-        console.log(e)
+        console.warn(e)
     }
 }
 
@@ -33,13 +34,24 @@ function* asyncLoadMore(){
         yield put(setLoadMore(data))
         
     } catch (e){
+        console.warn(e)
+    }
+}
 
+function* asyncGetSpecific(){
+    try{
+        const searchParams = yield select(state => state.specificMovie.searchParams);
+        const response = yield call(getMovies, searchParams)
+        yield put(setSpecificMovieInfo(response))
+    } catch (e){
+        console.warn(e)
     }
 }
 
 export default function* root(){
     yield all([
         takeEvery(MOVIES.SET_SEARCH_PARAMS, asyncGetMovies),
-        takeEvery(MOVIES.LOAD_MORE, asyncLoadMore)
+        takeEvery(MOVIES.LOAD_MORE, asyncLoadMore),
+        takeEvery(SPECIFIC_MOVIE.SET_ID, asyncGetSpecific)
     ])
 }

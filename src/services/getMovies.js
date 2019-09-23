@@ -1,6 +1,7 @@
+import {API_KEY} from './serviceConstants'
 export async function getMovies(queryStringParams) {
     
-    const KEY = 'e8a2119e';
+    const KEY = API_KEY;
     let url = `http://www.omdbapi.com/?apikey=${KEY}`
     if(queryStringParams.s){
         let formattedTitle = queryStringParams.s;
