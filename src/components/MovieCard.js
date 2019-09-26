@@ -14,27 +14,47 @@ export default function MovieCard(props) {
     dispatch(payload)
   }
   return (
-    <Wrapper onClick={() => setSpecificId(props.id)}>
-      <p className="title">{props.title}</p>
+    <Card onClick={() => setSpecificId(props.id)}>
       <img src={props.imgURL === 'N/A' ? notFound : props.imgURL}/>
-      <ul>
+      <div className="card">
+        <ul>
+        <li>{props.title}</li>
         <li>ano de lançamento: {props.releaseDate}</li>
         <li>tipo: {props.type}</li>
       </ul>
-    </Wrapper>
+      </div>
+    </Card>
   )
 }
 
 
-const Wrapper = styled.div`
-  background: rgba(255,255,255,0.6);
-  /* max-width: 440px; */
+const Card = styled.div`
   display: inline-block;
   border-radius: 5px;
   margin: 10px 20px;
-  width: 320px;
+  position: relative;
+  .card{
+    position: absolute;
+    display: none;
+    width: 100%;
+    bottom: 5px;
+    border-radius: 0 0 5px 5px;
+    height: 120px;
+    ul{
+      bottom:  0;
+    }
+  }
   :hover{
-    opacity: 0.6;
+    .card{
+      @keyframes reveal {
+        from {opacity: 0.2}
+        to {opacity: 0.8}
+      }
+    animation: reveal .3s;
+    display: block;
+    opacity: 0.8;
+    background: #2a2a2a;
+    }
   }
 
   img{
@@ -44,10 +64,12 @@ const Wrapper = styled.div`
   }
   ul{
     list-style:none;
+    padding: 0;
+    position: absolute;
     text-align: start;
     margin-left: 10%;
     li{
-      color: black;
+      color: #FFFFFF;
     }
   }
 
@@ -56,8 +78,5 @@ const Wrapper = styled.div`
     background: #000;
     color: white;
     border-radius: 5px 5px 0 0;
-  }
-  .release-year{
-
   }
 `

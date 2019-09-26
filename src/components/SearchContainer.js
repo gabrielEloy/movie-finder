@@ -42,7 +42,7 @@ export default function SearchBar(props){
                         <input type="text" id="title" name="title" placeholder="busque um filme por nome" onChange={titleChangeHandler}/>
                         <button onClick={search}>Buscar</button>
                     </div>
-                        <div className="options">
+                        {/* <div className="options">
                                     <label htmlFor="type">Tipo</label>                        
                                     <select onChange={typeHandler} value={type} placeholder="escolha um tipo" name="type">
                                         <option value="movie">Filme</option>
@@ -52,45 +52,51 @@ export default function SearchBar(props){
                                     </select>
                                     <label htmlFor="year">ano</label>
                                     <input placeholder="Filtre por ano" type="number" id="year" name="year" onChange={yearHandler}/>  
-                        </div>
+                        </div> */}
                 </div>
             </SearchContainer>
         )
     }
 
 
-const SearchContainer = styled.div`   
+const SearchContainer = styled.div`      
+   height: 100%;
    .filters{
-    width: 100%;
     display: flex;
+    height: 100%;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    margin-top: 15vh;
+    justify-content: center;
     border-radius: 10px;
         .input-block{
             display: flex;
             width: ${props => props.width ? props.width : '60%'};
             box-shadow: -6px 0 60px 10px black;
             input{
+                font-family: inherit;
                 flex: 8;
                 height: 50px;
-                border-radius: 10px 0px 0px 10px;
-                border: none;
+                border-radius: 5px 0 0 5px;
+                border-right: none;
+                border: solid 1px #FFFFFF;
+                background: none;
                 box-sizing: border-box;
                 font-size: 1.3em;
-                color: #000000;
+                color: #a3a3a3;
                 padding: 20px;
                 :focus{
                     outline: none;
                 }
             }
             button{
-                font-family: 'Poppins',sans-serif;
                 flex: 2;
-                border: none;
-                border-radius: 0px 10px 10px 0px;
+                font-family: inherit;
+                border-left: none;
+                border-radius: 0px 5px 5px 0px;
+                background: none;
                 height: 51px;
                 box-sizing: border-box;
-                background: #525252;
                 color: white;
                 letter-spacing: 0.15em;
                 text-transform: uppercase;

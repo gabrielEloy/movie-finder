@@ -31,6 +31,7 @@ export default function SpecificMovie() {
                     director={movieData.movieInfo.Director}
                     country={movieData.movieInfo.Country}
                     awards={movieData.movieInfo.Awards}
+                    rating={movieData.movieInfo.imdbRating}
                 /> }
             </div>
         </SpeficPage>
@@ -54,9 +55,9 @@ const SpeficPage = styled.div`
     }
     .content{
         display: flex;
-        margin-top: 15%;
-        @media (max-width: 426){
-            margin-top: 30%;
+        margin-top: 6%;
+        @media (max-width: 995px){
+            margin-top: 10%;
         }
         justify-content: center;
         align-items: center;
