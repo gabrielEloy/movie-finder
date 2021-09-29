@@ -39,7 +39,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.11.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "file-loader": "^4.2.0",
-    "i": "^0.3.6",
+    "i": "^0.3.7",
     "npm": "^6.11.3",
     "polished": "^3.4.1",
     "react": "^16.9.0",
